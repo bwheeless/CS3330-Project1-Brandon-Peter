@@ -1,13 +1,12 @@
 CREATE DATABASE stadium_parking;
 
-DROP TABLE vehicle, entrypoint, ticket, employee, parking_space, parking_lot, stadium, event;
+-- DROP TABLE vehicle, entrypoint, ticket, employee, parking_space, parking_lot, stadium, event, lot_entrypoints;
 
 CREATE TABLE stadium(
     id SERIAL PRIMARY KEY,
     address VARCHAR(30) NOT NULL,
     name VARCHAR(15) NOT NULL
 );
-
 
 CREATE TABLE parking_lot(
     name CHAR NOT NULL PRIMARY KEY,
@@ -19,7 +18,6 @@ CREATE TABLE event(
     event_type VARCHAR(10) NOT NULL,
     stadium_id SERIAL REFERENCES stadium(id)
 );
-
 CREATE TABLE vehicle(
     license_plate VARCHAR(8) NOT NULL PRIMARY KEY,
     type VARCHAR(5) NOT NULL,
@@ -33,12 +31,15 @@ CREATE TABLE parking_space(
      vehicle_id VARCHAR REFERENCES vehicle(license_plate),
      lot_id CHAR REFERENCES parking_lot(name)
 );
-
 CREATE TABLE entrypoint(
     id CHAR NOT NULL PRIMARY KEY
 
 );
 
+
+-- Consider the scenario where a parking lot has an excess of traffic due to the parking lot having a singular entrypoint.
+-- Implement the ability to increase the number of entrypoints for each parking lot to improve the flow of traffic.
+-- This may not be used for the original design, but might be necessary for the future.
 CREATE TABLE lot_entrypoints(
   parking_lot_id CHAR REFERENCES parking_lot(name),
   entrypoint_id CHAR REFERENCES entrypoint(id),
