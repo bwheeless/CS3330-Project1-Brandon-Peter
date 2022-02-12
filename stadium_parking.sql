@@ -1,5 +1,7 @@
 CREATE DATABASE stadium_parking;
 
+DROP TABLE vehicle, entrypoint, ticket, employee, parking_space, parking_lot, stadium, event;
+
 CREATE TABLE stadium(
     id SERIAL PRIMARY KEY,
     address VARCHAR(30) NOT NULL,
@@ -9,7 +11,6 @@ CREATE TABLE stadium(
 
 CREATE TABLE parking_lot(
     name CHAR NOT NULL PRIMARY KEY,
-    entry_id SERIAL,
     stadium_id SERIAL REFERENCES stadium(id)
 );
 
