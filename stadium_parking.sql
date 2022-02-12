@@ -31,21 +31,26 @@ CREATE TABLE parking_space(
 );
 
 CREATE TABLE entrypoint(
-    id SERIAL PRIMARY KEY,
-    parking_lot_id SERIAL REFERENCES parking_lot(id)
+    id INTEGER NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE lot_entrypoints(
+  parking_lot_id INTEGER REFERENCES parking_lot(id),
+  entrypoint_id INTEGER REFERENCES entrypoint(id),
+  PRIMARY KEY (parking_lot_id, entrypoint_id)
 );
 
 
 CREATE TABLE ticket(
-    id SERIAL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY,
     vehicle_id VARCHAR NOT NULL REFERENCES vehicle(license_plate),
     entrypoint_id SERIAL REFERENCES entrypoint(id)
 );
 
 CREATE TABLE employee(
-    id SERIAL PRIMARY KEY,
     first_name VARCHAR(10) NOT NULL,
     last_name VARCHAR(10) NOT NULL,
+    PRIMARY KEY (first_name, last_name),
     entrypoint_id SERIAL REFERENCES entrypoint(id)
 );
 
