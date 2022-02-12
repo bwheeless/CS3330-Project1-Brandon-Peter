@@ -16,7 +16,7 @@ CREATE TABLE parking_lot(
 
 CREATE TABLE event(
     event_id SERIAL PRIMARY KEY,
-    event_type VARCHAR,
+    event_type VARCHAR(10) NOT NULL,
     stadium_id SERIAL REFERENCES stadium(id)
 );
 
