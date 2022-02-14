@@ -16,5 +16,13 @@ WHERE event_id = 2;
 SELECT * FROM employee
 WHERE entrypoint_id = '2';
 -- How many Trucks have parked at any of my venues?
+SELECT * FROM vehicle
+WHERE type = 'truck';
 -- How many of each vehicle type have parked at any of my venues?
+SELECT * FROM vehicle
+WHERE type = 'truck'
+OR type = 'suv'
+OR type = 'coupe'
+OR type = 'van'
+OR type = 'sedan';
 -- On average, how many vehicles come to an event?

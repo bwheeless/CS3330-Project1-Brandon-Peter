@@ -22,13 +22,13 @@ CREATE TABLE event(
 CREATE TABLE vehicle(
     license_plate VARCHAR(8) NOT NULL PRIMARY KEY,
     type VARCHAR(5) NOT NULL,
-    is_handicap BOOL NOT NULL
+    is_handicap BOOL NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE parking_space(
      spot_number INTEGER NOT NULL PRIMARY KEY,
      is_available BOOL not NULL,
-     is_handicap BOOL NOT NULL,
+     is_handicap BOOL NOT NULL DEFAULT FALSE,
      vehicle_id VARCHAR REFERENCES vehicle(license_plate),
      lot_id CHAR REFERENCES parking_lot(name)
 );
