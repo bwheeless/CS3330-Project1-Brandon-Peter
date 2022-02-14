@@ -12,3 +12,9 @@ WHERE event_id = 1;
 -- What parking spaces ended up being used for Event 1?
 SELECT * FROM ticket
 WHERE event_id = 2;
+-- What employees occupy lot 2 at Rodeo Stadium?
+SELECT * FROM employee
+WHERE entrypoint_id = '2';
+-- How many Trucks have parked at any of my venues?
+-- How many of each vehicle type have parked at any of my venues?
+-- On average, how many vehicles come to an event?

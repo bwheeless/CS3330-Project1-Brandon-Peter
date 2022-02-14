@@ -12,8 +12,6 @@ values
 ('b', 2),
 ('c', 2);
 
-select * from public.parking_lot;
-
 insert into event  (event_type, stadium_id)
 values
 ('bball', 1),
@@ -112,7 +110,6 @@ values
 ('b', 'b', 'robert'),
 ('c', 'c', 'hilltop');
 
-SELECT * FROM event;
 insert into ticket (id, vehicle_id, event_id, entrypoint_id)
 values 
 (1, 666, 1, '1'),
