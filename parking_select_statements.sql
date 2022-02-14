@@ -6,3 +6,9 @@ select stadium_id from public.parking_lot where stadium_id = 1;
 select lot_id from public.parking_space where lot_id = '1' or lot_id = '2' or lot_id = '3';
 -- What parking spaces are currently available for use
 select * from public.parking_space where (lot_id = '1' or lot_id = '2' or lot_id = '3') and (is_available = true);
+-- What parking spaces ended up being used for Event 1?
+SELECT * FROM ticket
+WHERE event_id = 1;
+-- What parking spaces ended up being used for Event 1?
+SELECT * FROM ticket
+WHERE event_id = 2;

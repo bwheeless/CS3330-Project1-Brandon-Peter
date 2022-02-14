@@ -150,8 +150,6 @@ values
 (33, 698,1, 'c'),
 (34, 699, 4,'c');
 
-SELECT * FROM ticket
-WHERE event_id = 2;
 insert into employee (first_name, last_name, entrypoint_id)
 values
 ('brandon', 'wheeless', '1'),
