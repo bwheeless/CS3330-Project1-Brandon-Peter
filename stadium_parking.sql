@@ -1,5 +1,5 @@
 CREATE DATABASE stadium_parking;
-
+-- DROP TABLE stadium, parking_lot, vehicle, event, parking_space, ticket, entrypoint, employee, lot_entrypoints;
 CREATE TABLE stadium(
     id SERIAL PRIMARY KEY,
     address VARCHAR(30) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE parking_space(
 
 CREATE TABLE entrypoint(
   parking_lot_id CHAR REFERENCES parking_lot(name),
-  entrypoint_id CHAR,
+  entrypoint_id CHAR NOT NULL,
   entrypoint_name VARCHAR(20),
   PRIMARY KEY (entrypoint_id)
 );
@@ -44,12 +44,13 @@ CREATE TABLE entrypoint(
 CREATE TABLE ticket(
     id INTEGER NOT NULL PRIMARY KEY,
     vehicle_id VARCHAR NOT NULL REFERENCES vehicle(license_plate),
-    entrypoint_id CHAR REFERENCES entrypoint(id)
+    event_id SERIAL REFERENCES event(event_id),
+    entrypoint_id CHAR REFERENCES entrypoint(entrypoint_id)
 );
 
 CREATE TABLE employee(
     first_name VARCHAR(10) NOT NULL,
     last_name VARCHAR(10) NOT NULL,
     PRIMARY KEY (first_name, last_name),
-    entrypoint_id CHAR REFERENCES entrypoint(id)
+    entrypoint_id CHAR REFERENCES entrypoint(entrypoint_id)
 );
