@@ -9,7 +9,7 @@ CREATE TABLE stadium(
 
 CREATE TABLE parking_lot(
     name CHAR NOT NULL PRIMARY KEY,
-    entrypoint_id CHAR,
+    entrypoint_id CHAR REFERENCES entrypoint(entrypoint_id),
     stadium_id SERIAL REFERENCES stadium(id)
 );
 
