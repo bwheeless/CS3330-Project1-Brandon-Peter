@@ -29,3 +29,9 @@ GROUP BY type;
 SELECT AVG(x.total)
 FROM (SELECT COUNT(id) AS total FROM ticket GROUP BY event_id)x;
 -- courtesy of https://stackoverflow.com/questions/17030062/nested-aggregate-functions-maxavg-in-sql/17030168
+
+-- How many vehicles did the first valet driver drive?
+SELECT first_name, last_name, COUNT(*) AS cars_driven FROM valet_vehicles
+JOIN valet ON valet.employee_id = valet_vehicles.valet_id
+WHERE valet_id = '1234'
+GROUP BY first_name, last_name;

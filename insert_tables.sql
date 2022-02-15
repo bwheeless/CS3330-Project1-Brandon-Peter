@@ -56,6 +56,15 @@ values
 ('698', 'suv', TRUE),
 ('699', 'suv', FALSE);
 
+insert into vehicle  (license_plate, type, is_handicap, is_valet)
+values
+('700', 'suv', FALSE, TRUE),
+('701', 'truck', FALSE, TRUE),
+('702', 'coupe', FALSE, TRUE),
+('703', 'truck', FALSE, TRUE),
+('704', 'sedan', FALSE, TRUE),
+('705', 'suv', FALSE, TRUE);
+
 insert into parking_space  (spot_number, is_available , is_handicap, lot_id, vehicle_id)
 values
 (001, true, true, '1', NULL),
@@ -158,3 +167,25 @@ values
 ('theta', 'tau', '3'),
 ('lil', 'peep', '3'),
 ('dead', 'mau5', '3');
+
+SELECT * FROM entrypoint;
+
+INSERT INTO valet(employee_id, first_name, last_name, entrypoint_id)
+VALUES
+(1234, 'Doug', 'Dimmadome', '1'),
+(1345, 'George', 'Washington', '1'),
+(2234, 'Michael', 'Phelps', '2'),
+(2345, 'Lebron', 'James', '2'),
+(6234, 'Doug', 'Dimmadome', 'a'),
+(5345, 'George', 'Washington', 'b'),
+(4234, 'Michael', 'Phelps', 'c'),
+(3345, 'Lebron', 'James', '3');
+
+INSERT INTO valet_vehicles(valet_id, vehicle_id)
+VALUES
+(1234, '700'),
+(1345, '701'),
+(2234, '702'),
+(1234, '703'),
+(2234, '704'),
+(3345, '705');
