@@ -35,3 +35,9 @@ SELECT first_name, last_name, COUNT(*) AS cars_driven FROM valet_vehicles
 JOIN valet ON valet.employee_id = valet_vehicles.valet_id
 WHERE valet_id = '1234'
 GROUP BY first_name, last_name;
+
+-- How many trucks were driven by the valet?
+SELECT type, license_plate, COUNT(*) AS cars_driven FROM valet_vehicles
+JOIN vehicle ON vehicle.license_plate = valet_vehicles.vehicle_id
+WHERE type = 'truck'
+GROUP BY type, license_plate;
