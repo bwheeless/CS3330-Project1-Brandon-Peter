@@ -30,6 +30,10 @@ SELECT AVG(x.total)
 FROM (SELECT COUNT(id) AS total FROM ticket GROUP BY event_id)x;
 -- courtesy of https://stackoverflow.com/questions/17030062/nested-aggregate-functions-maxavg-in-sql/17030168
 
+-- On average, how many entry points does a parking lot have?
+SELECT AVG(y.total)
+FROM (SELECT COUNT(*) AS total FROM public.entrypoint GROUP BY parking_lot_id)y;
+
 -- How many vehicles did the first valet driver drive?
 SELECT first_name, last_name, COUNT(*) AS cars_driven FROM valet_vehicles
 JOIN valet ON valet.employee_id = valet_vehicles.valet_id
