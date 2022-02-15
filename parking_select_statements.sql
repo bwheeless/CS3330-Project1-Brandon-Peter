@@ -16,13 +16,16 @@ WHERE event_id = 2;
 SELECT * FROM employee
 WHERE entrypoint_id = '2';
 -- How many Trucks have parked at any of my venues?
-SELECT * FROM vehicle
+SELECT COUNT(*) AS total
+FROM vehicle
 WHERE type = 'truck';
 -- How many of each vehicle type have parked at any of my venues?
-SELECT * FROM vehicle
-WHERE type = 'truck'
-OR type = 'suv'
-OR type = 'coupe'
-OR type = 'van'
-OR type = 'sedan';
+SELECT type, COUNT(type)
+FROM vehicle
+GROUP BY type;
+-- courtesy of https://www.postgresqltutorial.com/postgresql-aggregate-functions/
+
 -- On average, how many vehicles come to an event?
+SELECT AVG(x.total)
+FROM (SELECT COUNT(id) AS total FROM ticket GROUP BY event_id)x;
+-- courtesy of https://stackoverflow.com/questions/17030062/nested-aggregate-functions-maxavg-in-sql/17030168
